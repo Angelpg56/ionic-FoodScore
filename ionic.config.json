@@ -1,0 +1,7 @@
+{
+  "name": "ionic-FoodScore",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
