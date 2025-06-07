@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'restaurants-page',
   templateUrl: './restaurants-page.component.html',
-  styleUrls: ['./restaurants-page.component.css'],
+  styleUrls: ['./restaurants-page.component.scss'],
   standalone: true,
   imports: [
     RestaurantCardComponent, FormsModule, IonContent, IonGrid,

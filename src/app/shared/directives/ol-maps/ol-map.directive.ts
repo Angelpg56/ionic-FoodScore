@@ -27,7 +27,7 @@ export class OlMapDirective {
   }
 
   constructor() {
-    afterNextRender(() => { // Ejecutamos solo en cliente (SSR)
+    afterNextRender(() => {
       useGeographic();
 
       this.#view = new View({
@@ -53,7 +53,7 @@ export class OlMapDirective {
       });
     });
 
-    afterRenderEffect(() => { // Cada vez que cambien las coordenadas
+    afterRenderEffect(() => {
       this.#view.setCenter(this.coordinates());
     });
   }

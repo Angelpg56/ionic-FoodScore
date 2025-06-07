@@ -13,7 +13,7 @@ import { arrowBack } from 'ionicons/icons';
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  styleUrls: ['./register.component.scss'],
   standalone: true,
   imports: [
     ReactiveFormsModule,

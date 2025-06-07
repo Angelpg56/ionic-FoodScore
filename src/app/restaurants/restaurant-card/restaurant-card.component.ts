@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'restaurant-card',
   templateUrl: './restaurant-card.component.html',
-  styleUrls: ['./restaurant-card.component.css'],
+  styleUrls: ['./restaurant-card.component.scss'],
   standalone: true,
   imports: [IonCol,
     IonCard, IonCardHeader, IonCardTitle, IonCardContent,

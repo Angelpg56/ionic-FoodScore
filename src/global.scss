@@ -35,6 +35,14 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+@import "ol/ol.css";
+@import "@geoapify/geocoder-autocomplete/styles/minimal.css";
+
+ol-map, .ol-map-container {
+  display: block;
+  width: 100%;
+  height: 300px;
+}
 
 .ion-color-github {
   --ion-color-base: var(--ion-color-github);

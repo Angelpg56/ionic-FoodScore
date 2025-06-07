@@ -12,7 +12,7 @@ import { image } from 'ionicons/icons';
 @Component({
   selector: 'restaurant-form',
   templateUrl: './restaurant-form.component.html',
-  styleUrls: ['./restaurant-form.component.css'],
+  styleUrls: ['./restaurant-form.component.scss'],
   standalone: true,
   imports: [IonText,
     ReactiveFormsModule,

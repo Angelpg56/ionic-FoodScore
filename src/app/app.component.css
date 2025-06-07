@@ -1,6 +1,0 @@
-@import "ol/ol.css";
-@import "@geoapify/geocoder-autocomplete/styles/minimal.css";
-
-.autocomplete-container {
-  position: relative;
-}

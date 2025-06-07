@@ -13,7 +13,7 @@ import { OlMapDirective } from 'src/app/shared/directives/ol-maps/ol-map.directi
 @Component({
   selector: 'restaurant-details',
   templateUrl: './restaurant-details.component.html',
-  styleUrls: ['./restaurant-details.component.css'],
+  styleUrls: ['./restaurant-details.component.scss'],
   standalone: true,
   imports: [IonSpinner, RestaurantCardComponent, IonContent,
     IonCard, IonFooter, IonToolbar, IonButton, RouterLink, OlMapDirective]
@@ -70,32 +70,6 @@ export class RestaurantDetailsComponent {
     }
   });
 
-  /*restaurantResource!: ResourceRef<any>; // Declare the property with definite assignment assertion
-
-  constructor() {
-    // Obtener el parámetro id de la ruta y actualizar la señal id
-    const id2 = this.#route.snapshot.paramMap.get('id') ? Number(this.#route.snapshot.paramMap.get('id')) : undefined;
-    this.id.set(id2);
-
-    this.restaurantResource = rxResource({
-      request: () => this.id(),
-      loader: ({ request: id }) => {
-        return this.#restaurantService.getRestaurant(id).pipe(
-          tap((restaurant: Restaurant) => {
-            this.#title.setTitle(`${restaurant.name} | FoodScore`);
-            this.restaurant.set({ ...restaurant });
-            this.loading.set(false);
-            console.log(restaurant);
-          }),
-          catchError(() => {
-            this.loading.set(false);
-            this.#router.navigate(['/restaurants']);
-            return EMPTY;
-          })
-        );
-      }
-    });
-  }*/
 
   deleteRestaurant(id: number) {
     this.#restaurantService

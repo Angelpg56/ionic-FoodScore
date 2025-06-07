@@ -11,7 +11,7 @@ import { camera } from 'ionicons/icons';
 @Component({
   selector: 'edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css'],
+  styleUrls: ['./edit-user.component.scss'],
   standalone: true,
   imports: [
     ReactiveFormsModule,

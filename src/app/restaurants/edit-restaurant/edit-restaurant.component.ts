@@ -12,7 +12,7 @@ import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIt
 @Component({
   selector: 'edit-restaurant',
   templateUrl: './edit-restaurant.component.html',
-  styleUrls: ['./edit-restaurant.component.css'],
+  styleUrls: ['./edit-restaurant.component.scss'],
   standalone: true,
   imports: [IonIcon, IonText,
     ReactiveFormsModule,

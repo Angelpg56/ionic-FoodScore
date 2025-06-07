@@ -8,7 +8,7 @@ import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIt
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   standalone: true,
   imports: [
     ReactiveFormsModule,

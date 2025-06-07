@@ -1,5 +1,3 @@
-// Estilos personalizados para la app de FoodScore
-
 ion-app {
   --ion-background-color: #f8f9fa;
 }
@@ -19,12 +17,10 @@ ion-tab-bar {
   }
 }
 
-// Asegurar que el contenido tenga espacio para las tabs
 ion-router-outlet {
-  --padding-bottom: 56px; // Altura típica de tab bar
+  --padding-bottom: 56px;
 }
 
-// Opcional: personalizar colores del tema
 :root {
   --ion-color-primary: #007bff;
   --ion-color-primary-rgb: 0, 123, 255;
