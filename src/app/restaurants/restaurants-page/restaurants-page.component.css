@@ -1,0 +1,13 @@
+/* Estilos opcionales para personalización */
+ion-searchbar {
+  padding: 0;
+}
+
+ion-segment {
+  --background: transparent;
+}
+
+ion-note {
+  display: block;
+  margin-top: 20px;
+}

@@ -1,0 +1,17 @@
+/* Para ambos componentes */
+.img-preview {
+  max-height: 200px;
+  display: block;
+  margin: 10px auto;
+  border-radius: 8px;
+}
+
+ion-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+ion-checkbox {
+  margin-right: 8px;
+}

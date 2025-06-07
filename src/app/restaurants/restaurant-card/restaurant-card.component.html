@@ -1,0 +1,59 @@
+<ion-col size="12" size-md="6" size-lg="4">
+  <ion-card class="h-100">
+    <ion-img
+      [src]="restaurant().image"
+      alt="Imagen del restaurante"
+      [routerLink]="['/restaurants', restaurant().id]"
+      [routerLinkActive]="['active']"
+      [routerLinkActiveOptions]="{ exact: true }"></ion-img>
+    <ion-card-header>
+      @if (isActualUser()) {
+        <ion-button
+          fill="clear"
+          color="danger"
+          (click)="delete.emit(restaurant().id!)"
+          class="delete-btn">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      }
+      <ion-card-title>
+        {{ restaurant().name }}
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ restaurant().description }}</p>
+
+      <ion-chip [color]="isOpenToday() ? 'success' : 'danger'">
+        <ion-label>
+          {{ isOpenToday() ? 'Abierto' : 'Cerrado' }}
+        </ion-label>
+      </ion-chip>
+
+      <ion-text>
+        <p><strong>Horario:</strong> {{ getDaysFormatted() }}</p>
+      </ion-text>
+
+      <ion-text>
+        <p><strong>Teléfono:</strong> {{ restaurant().phone }}</p>
+      </ion-text>
+
+      <ion-text color="medium">
+        <p>Tipo de cocina: {{ restaurant().cuisine }}</p>
+      </ion-text>
+    </ion-card-content>
+
+    <ion-footer>
+      <ion-text color="medium">
+        <small>Creado por:
+        </small>
+        <a class="creator-link"
+            [routerLink]="['/profile', user()?.id]"
+            [routerLinkActive]="['active']"
+            [routerLinkActiveOptions]="{ exact: true }">
+          {{ user()?.name }}
+        </a>
+      </ion-text>
+    </ion-footer>
+  </ion-card>
+</ion-col>

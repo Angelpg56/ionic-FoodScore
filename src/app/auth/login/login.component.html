@@ -1,0 +1,63 @@
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Iniciar Sesión</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form (ngSubmit)="submitUser()" [formGroup]="loginForm">
+        <!-- Email -->
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            type="email"
+            formControlName="email"
+            [class.ion-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          </ion-input>
+          @if (loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched) {
+            <ion-note slot="error" color="danger">El email es obligatorio</ion-note>
+          }
+          @if (loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched) {
+            <ion-note slot="error" color="danger">Formato de email inválido</ion-note>
+          }
+        </ion-item>
+
+        <!-- Contraseña -->
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input
+            type="password"
+            formControlName="password"
+            [class.ion-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          </ion-input>
+          @if (loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched) {
+            <ion-note slot="error" color="danger">La contraseña es obligatoria</ion-note>
+          }
+          @if (loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched) {
+            <ion-note slot="error" color="danger">Mínimo 4 caracteres</ion-note>
+          }
+        </ion-item>
+
+        <!-- Botón Submit -->
+        <ion-button
+          type="submit"
+          expand="block"
+          [disabled]="loginForm.invalid">
+          Ingresar
+        </ion-button>
+
+        <!-- Mensaje de error -->
+        @if (errorMsg()) {
+          <ion-text color="danger" class="ion-text-center">
+            <p>{{ errorMsg() }}</p>
+          </ion-text>
+        }
+
+        <!-- Enlace a Registro -->
+        <ion-text class="ion-text-center ion-margin-top">
+          <p>¿No tienes cuenta? <a routerLink="/auth/register">Regístrate</a></p>
+        </ion-text>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

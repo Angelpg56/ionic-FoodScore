@@ -1,0 +1,73 @@
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header color="primary">
+      <ion-card-title>Editar Perfil</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="editUserForm" (ngSubmit)="updateUser()">
+        <!-- Avatar -->
+        <div class="avatar-upload">
+          <ion-avatar>
+            <ion-img [src]="avatar"></ion-img>
+          </ion-avatar>
+          <ion-button fill="clear" class="upload-btn">
+            <ion-icon name="camera" slot="start"></ion-icon>
+            <input
+              type="file"
+              id="avatar"
+              formControlName="avatar"
+              (change)="onFileChange($event)"
+              accept="image/*"
+            />
+          </ion-button>
+        </div>
+
+        <!-- Campos del formulario -->
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input
+            type="text"
+            formControlName="name"
+            [class.ion-invalid]="editUserForm.get('name')?.invalid && editUserForm.get('name')?.touched">
+          </ion-input>
+          @if (editUserForm.get('name')?.errors?.['required']) {
+            <ion-note slot="error" color="danger">Nombre obligatorio</ion-note>
+          }
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            type="email"
+            formControlName="email"
+            [class.ion-invalid]="editUserForm.get('email')?.invalid && editUserForm.get('email')?.touched">
+          </ion-input>
+          @if (editUserForm.get('email')?.errors?.['required']) {
+            <ion-note slot="error" color="danger">Email obligatorio</ion-note>
+          }
+          @if (editUserForm.get('email')?.errors?.['email']) {
+            <ion-note slot="error" color="danger">Formato inválido</ion-note>
+          }
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Contraseña (dejar vacío para no cambiar)</ion-label>
+          <ion-input
+            type="password"
+            formControlName="password">
+          </ion-input>
+        </ion-item>
+
+        <!-- Botón de envío -->
+        <ion-button
+          type="submit"
+          expand="block"
+          class="ion-margin-top"
+          [disabled]="editUserForm.invalid">
+          Guardar Cambios
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

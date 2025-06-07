@@ -1,0 +1,126 @@
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Crea una cuenta</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form (ngSubmit)="submitUser()" [formGroup]="registerForm">
+        <!-- Botón "Volver" -->
+        <ion-button
+          fill="clear"
+          color="medium"
+          routerLink="/auth/login"
+          class="ion-margin-bottom">
+          <ion-icon slot="start" name="arrow-back"></ion-icon>
+          Volver
+        </ion-button>
+
+        <!-- Nombre -->
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input
+            type="text"
+            formControlName="name"
+            [class.ion-invalid]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+          </ion-input>
+          @if (registerForm.get('name')?.errors?.['required'] && registerForm.get('name')?.touched) {
+            <ion-note slot="error" color="danger">El nombre es obligatorio</ion-note>
+          }
+        </ion-item>
+
+        <!-- Grupo de Emails -->
+        <div formGroupName="emailGroup">
+          <!-- Email 1 -->
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input
+              type="email"
+              formControlName="email"
+              [class.ion-invalid]="registerForm.get('emailGroup.email')?.invalid && registerForm.get('emailGroup.email')?.touched">
+            </ion-input>
+            @if (registerForm.get('emailGroup.email')?.errors?.['required'] && registerForm.get('emailGroup.email')?.touched) {
+              <ion-note slot="error" color="danger">El email es obligatorio</ion-note>
+            }
+            @if (registerForm.get('emailGroup.email')?.errors?.['email'] && registerForm.get('emailGroup.email')?.touched) {
+              <ion-note slot="error" color="danger">Formato inválido</ion-note>
+            }
+          </ion-item>
+
+          <!-- Email 2 -->
+          <ion-item>
+            <ion-label position="floating">Repetir Email</ion-label>
+            <ion-input
+              type="email"
+              formControlName="email2"
+              [class.ion-invalid]="registerForm.get('emailGroup.email2')?.invalid && registerForm.get('emailGroup.email2')?.touched">
+            </ion-input>
+            @if (registerForm.get('emailGroup.email2')?.errors?.['required'] && registerForm.get('emailGroup.email2')?.touched) {
+              <ion-note slot="error" color="danger">El email es obligatorio</ion-note>
+            }
+            @if (registerForm.get('emailGroup.email2')?.errors?.['matchEmail'] && registerForm.get('emailGroup.email2')?.touched) {
+              <ion-note slot="error" color="danger">Los emails no coinciden</ion-note>
+            }
+          </ion-item>
+        </div>
+
+        <!-- Contraseña -->
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input
+            type="password"
+            formControlName="password"
+            [class.ion-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+          </ion-input>
+          @if (registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched) {
+            <ion-note slot="error" color="danger">La contraseña es obligatoria</ion-note>
+          }
+          @if (registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.touched) {
+            <ion-note slot="error" color="danger">Mínimo 4 caracteres</ion-note>
+          }
+        </ion-item>
+
+        <!-- Avatar (Imagen) -->
+        <ion-item>
+          <ion-label position="stacked">Avatar</ion-label>
+          <input
+            type="file"
+            id="avatar"
+            formControlName="avatar"
+            (change)="onFileChange($event)"
+            accept="image/*"
+            class="ion-padding-top"
+          />
+          @if (registerForm.get('avatar')?.errors?.['required'] && registerForm.get('avatar')?.touched) {
+            <ion-note slot="error" color="danger">El avatar es obligatorio</ion-note>
+          }
+        </ion-item>
+
+        <!-- Vista previa de la imagen -->
+        @if (image()) {
+          <ion-img
+            [src]="image()"
+            alt="Vista previa del avatar"
+            class="ion-margin-top img-preview">
+          </ion-img>
+        }
+
+        <!-- Botón Submit -->
+        <ion-button
+          type="submit"
+          expand="block"
+          class="ion-margin-top"
+          [disabled]="registerForm.invalid">
+          Crear cuenta
+        </ion-button>
+
+        <!-- Mensaje de error -->
+        @if (errorMsg()) {
+          <ion-text color="danger" class="ion-text-center">
+            <p>{{ errorMsg() }}</p>
+          </ion-text>
+        }
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,135 @@
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Editar Restaurante</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="editRestaurantForm" (ngSubmit)="updateRestaurant()">
+        <!-- Los campos son iguales al formulario de añadir -->
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input
+            type="text"
+            formControlName="name"
+            [class.ion-invalid]="editRestaurantForm.get('name')?.invalid && editRestaurantForm.get('name')?.touched">
+          </ion-input>
+          @if (editRestaurantForm.get('name')?.errors?.['required']) {
+            <ion-note slot="error" color="danger">El nombre es obligatorio</ion-note>
+          }
+          @if (editRestaurantForm.get('name')?.errors?.['pattern']) {
+            <ion-note slot="error" color="danger">Solo letras y espacios, empezando por letra</ion-note>
+          }
+        </ion-item>
+
+        <!-- Descripción -->
+        <ion-item>
+          <ion-label position="floating">Descripción</ion-label>
+          <ion-textarea
+            formControlName="description"
+            [class.ion-invalid]="editRestaurantForm.get('description')?.invalid && editRestaurantForm.get('description')?.touched">
+          </ion-textarea>
+          @if (editRestaurantForm.get('description')?.errors?.['required']) {
+            <ion-note slot="error" color="danger">La descripción es obligatoria</ion-note>
+          }
+        </ion-item>
+
+        <!-- Tipo de Cocina -->
+        <ion-item>
+          <ion-label position="floating">Tipo de Cocina</ion-label>
+          <ion-input
+            type="text"
+            formControlName="cuisine"
+            [class.ion-invalid]="editRestaurantForm.get('cuisine')?.invalid && editRestaurantForm.get('cuisine')?.touched">
+          </ion-input>
+          @if (editRestaurantForm.get('cuisine')?.errors?.['required']) {
+            <ion-note slot="error" color="danger">El tipo de cocina es obligatorio</ion-note>
+          }
+        </ion-item>
+
+        <!-- Días de Apertura -->
+        <ion-item>
+          <ion-label>Días de Apertura</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox-group formArrayName="daysOpen">
+            @for (day of editRestaurantForm.controls.daysOpen.controls; track day; let i = $index) {
+              <ion-item>
+                <ion-checkbox [formControlName]="i" slot="start"></ion-checkbox>
+                <ion-label>{{ days[i] }}</ion-label>
+              </ion-item>
+            }
+          </ion-checkbox-group>
+        </ion-item>
+        @if (editRestaurantForm.controls.daysOpen.invalid) {
+          <ion-text color="danger" class="ion-padding">
+            <p>Selecciona al menos un día</p>
+          </ion-text>
+        }
+
+        <!-- Teléfono -->
+        <ion-item>
+          <ion-label position="floating">Teléfono</ion-label>
+          <ion-input
+            type="tel"
+            formControlName="phone"
+            [class.ion-invalid]="editRestaurantForm.get('phone')?.invalid && editRestaurantForm.get('phone')?.touched">
+          </ion-input>
+          @if (editRestaurantForm.get('phone')?.errors?.['required']) {
+            <ion-note slot="error" color="danger">El teléfono es obligatorio</ion-note>
+          }
+          @if (editRestaurantForm.get('phone')?.errors?.['pattern']) {
+            <ion-note slot="error" color="danger">Formato: 9 dígitos (+prefijo opcional)</ion-note>
+          }
+        </ion-item>
+
+        <!-- Imagen -->
+        <ion-item>
+          <ion-label position="stacked">Imagen</ion-label>
+          <input
+            type="file"
+            id="image"
+            formControlName="image"
+            (change)="onFileChange($event)"
+            accept="image/*"
+            hidden
+          />
+          <ion-button fill="outline" (click)="triggerFileInput()">
+            <ion-icon name="image" slot="start"></ion-icon>
+            Seleccionar Imagen
+          </ion-button>
+          @if (editRestaurantForm.get('image')?.errors?.['required']) {
+            <ion-note color="danger">La imagen es obligatoria</ion-note>
+          }
+        </ion-item>
+
+        <!-- Vista previa de la imagen -->
+        @if (image != null) {
+          <ion-img
+            [src]="image"
+            alt="Vista previa"
+            class="ion-margin-top img-preview">
+          </ion-img>
+        }
+
+        <!-- Botones adicionales -->
+        <ion-button
+          type="button"
+          color="danger"
+          expand="block"
+          class="ion-margin-top"
+          (click)="deleteRestaurant()">
+          Eliminar Restaurante
+        </ion-button>
+
+        <ion-button
+          type="submit"
+          expand="block"
+          class="ion-margin-top"
+          [disabled]="editRestaurantForm.invalid">
+          Guardar Cambios
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

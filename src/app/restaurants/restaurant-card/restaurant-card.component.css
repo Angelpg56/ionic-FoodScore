@@ -1,0 +1,32 @@
+ion-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.clickable-image, .clickable-title {
+  cursor: pointer;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+ion-img {
+  height: 200px;
+  object-fit: cover;
+}
+
+ion-footer {
+  padding: 10px;
+  margin-top: auto;
+}
+
+.creator-link {
+  color: var(--ion-color-primary);
+  text-decoration: none;
+  cursor: pointer;
+}

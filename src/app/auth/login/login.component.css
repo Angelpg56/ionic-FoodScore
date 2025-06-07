@@ -1,0 +1,10 @@
+/* Opcional: Personalización adicional */
+ion-card {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--ion-color-primary);
+}

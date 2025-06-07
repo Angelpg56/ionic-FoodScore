@@ -1,0 +1,56 @@
+<ion-content class="ion-padding">
+  <ion-toolbar color="light" class="custom-toolbar">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12" size-md="8">
+        <ion-searchbar
+          [(ngModel)]="searchstr"
+          placeholder="Buscar restaurantes"
+          (ionChange)="search()"
+          debounce="500">
+        </ion-searchbar>
+      </ion-col>
+      <ion-col size="12" size-md="4" class="ion-text-end">
+        <ion-segment [(ngModel)]="showOpen">
+          <ion-segment-button [value]="false">
+            <ion-label>Todos</ion-label>
+          </ion-segment-button>
+          <ion-segment-button [value]="true">
+            <ion-label>Abiertos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+  <ion-note class="ion-text-center ion-margin-top">
+    Restaurantes totales cargados: {{ restaurants().length }} <br>
+    Restaurantes filtrados: {{ filteredRests().length }}
+  </ion-note>
+
+  @if (filteredRests().length) {
+    <ion-grid>
+      <ion-row>
+        @for (restaurant of filteredRests(); track restaurant.id) {
+          <ion-col size="12" size-md="6" size-lg="4">
+            <restaurant-card
+              [restaurant]="restaurant"
+              (delete)="deleteRestaurant($event)">
+            </restaurant-card>
+          </ion-col>
+        }
+      </ion-row>
+    </ion-grid>
+
+    <ion-button
+      expand="block"
+      fill="clear"
+      (click)="loadMore()"
+      class="ion-margin-top">
+      Cargar más
+    </ion-button>
+  } @else {
+    <ion-text color="medium" class="ion-text-center">
+      <h3>No hay restaurantes</h3>
+    </ion-text>
+  }
+</ion-content>

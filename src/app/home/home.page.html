@@ -1,20 +1,49 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Blank</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-lg="3">
+        <p>This content takes 50% of space (default) and 25% in large screens</p>
+        <ion-button expand="block" color="primary">A button</ion-button>
+      </ion-col>
+      <ion-col size-lg="9">
+        <p>This content also takes 50% of space, and 75% in large screens</p>
+        <ion-button expand="block" color="secondary">Other button</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" offset="3">
+        This content has 25% margin from the left side and takes 50% of space.
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button color="light">Light</ion-button>
+  <ion-button>Default</ion-button>
+  <ion-button color="secondary">Secondary</ion-button>
+  <ion-button color="danger">Danger</ion-button>
+  <ion-button color="dark">Dark</ion-button>
+  <ion-button>
+    <ion-icon slot="start" name="star"></ion-icon>
+    Left Icon
+  </ion-button>
+  <ion-button>
+    Right Icon
+    <ion-icon slot="end" name="star"></ion-icon>
+  </ion-button>
+  <ion-button>
+    <ion-icon slot="icon-only" name="star"></ion-icon>
+  </ion-button>
+  <ion-list>
+    <ion-list-header color="secondary"> People </ion-list-header>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="./assets/tiofeo.jpg" />
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -1,0 +1,51 @@
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header color="primary">
+      <ion-card-title>Perfil de Usuario</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div class="profile-grid">
+        <!-- Avatar -->
+        <div class="avatar-section">
+          <ion-avatar>
+            <ion-img [src]="user()?.avatar" alt="Foto de perfil"></ion-img>
+          </ion-avatar>
+          <ion-text class="ion-text-center">
+            <h2>{{ user()?.name }}</h2>
+          </ion-text>
+        </div>
+
+        <!-- Detalles -->
+        <ion-list class="details-section">
+          <ion-item>
+            <ion-label><strong>Nombre:</strong> {{ user()?.name }}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Email:</strong> {{ user()?.email }}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Latitud:</strong> {{ user()?.lat }}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label><strong>Longitud:</strong> {{ user()?.lng }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-card-content>
+
+    @if (isActualUser()) {
+      <ion-footer>
+        <ion-toolbar>
+          <ion-buttons slot="end">
+            <ion-button
+              routerLink="/profile/edit"
+              routerLinkActive="active">
+              Editar Perfil
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
+    }
+  </ion-card>
+</ion-content>
